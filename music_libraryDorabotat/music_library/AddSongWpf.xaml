@@ -1,0 +1,124 @@
+﻿<Window x:Class="music_library.AddSongWpf"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:music_library"
+        mc:Ignorable="d"
+        Title="Добавление и редактирование песни" Height="470" Width="800" Closing="Window_Closing">
+    <Grid Background="#d6ccd5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Width="470" Grid.Row="0" Grid.Column="1" Margin="125,0,0,57" Grid.RowSpan="2">
+            <TextBlock Text="Добавление песни в библиотеку" FontSize="28" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <WrapPanel Margin="10,8,0,56" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock Text="Исполнитель:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="190"></TextBlock>
+            <StackPanel Width="365">
+                <TextBox Background="#c997c0" x:Name="SongCreator" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="200" Height="30" HorizontalContentAlignment="Center" MouseEnter="SongCreator_MouseEnter" MouseLeave="SongCreator_MouseLeave">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Margin="10,8,0,0" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+            <TextBlock Text="Название песни:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="190"></TextBlock>
+            <StackPanel Width="365">
+                <TextBox Background="#c997c0" x:Name="SongName" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="200" Height="30" HorizontalContentAlignment="Center" MouseEnter="SongName_MouseEnter" MouseLeave="SongName_MouseLeave">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <WrapPanel Margin="10,8,0,0" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+            <TextBlock Text="Жанр песни:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="190"></TextBlock>
+            <StackPanel Width="365">
+                <TextBox Background="#c997c0" x:Name="SongGenre" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="200" Height="30" HorizontalContentAlignment="Center" MouseEnter="SongGenre_MouseEnter" MouseLeave="SongGenre_MouseLeave">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <WrapPanel Margin="10,8,0,57" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock Text="Оценка песни:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="190"></TextBlock>
+            <StackPanel Width="365">
+                <TextBox Background="#c997c0" x:Name="SongMark" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="200" Height="30" HorizontalContentAlignment="Center" MouseEnter="SongMark_MouseEnter" MouseLeave="SongMark_MouseLeave">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <WrapPanel Margin="10,8,0,56" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock Text="Коммент песни:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="190"></TextBlock>
+            <StackPanel Width="365">
+                <TextBox Background="#c997c0" x:Name="SongComments" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="200" Height="30" HorizontalContentAlignment="Center" MouseEnter="SongComments_MouseEnter" MouseLeave="SongComments_MouseLeave">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <WrapPanel Margin="10,8,0,0" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+            <TextBlock Text="Путь песни:" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="130"></TextBlock>
+            <StackPanel Width="630" Orientation="Vertical">
+                <TextBox Background="#c997c0" x:Name="SongPath" FontSize="25" FontFamily="Franklin Gothic Medium" TextWrapping="Wrap" Width="630" Height="30" HorizontalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="6" HorizontalAlignment="Left" Margin="221,56,0,0" Grid.Column="1" Grid.RowSpan="2">
+            <Button x:Name="AddSongBtn" Background="#d6ccd5" BorderBrush="Transparent" Click="AddSongBtn_Click">
+                <Image Source="/ResourceDobSong/add.png" Width="50" Height="50"></Image>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Background="#d6ccd5" BorderBrush="Transparent" Margin="150 0 0 0 ">
+                <Image Source="/ResourceDobSong/cancel.png" Width="50" Height="50"></Image>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </WrapPanel>
+
+    </Grid>
+</Window>

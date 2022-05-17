@@ -1,0 +1,113 @@
+﻿<Window x:Class="music_library.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:music_library"
+        mc:Ignorable="d"
+        Title="Музыкальная библиотека" Height="570" Width="1400">
+    <Grid Background="#b7ced2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="260*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+            <ColumnDefinition Width="90*"></ColumnDefinition>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="TreeMenu" Grid.Column="0" Background="#528e86" Grid.RowSpan="2" FontSize="25" FontFamily="Franklin Gothic Medium">
+            <Button x:Name="ScanFiles" Margin="-5 7 0 0" Background="#528e86" BorderBrush="Transparent" Click="ScanFiles_Click">
+                <StackPanel Orientation="Horizontal" Cursor="Hand" Width="200">
+                    <Image Source="/Resource/scan.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 7 0 0" Text="Сканировать" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Rectangle Margin="-5 20 0 0" Width="200" Fill="#a19a90" Height="5" Opacity="0.45"></Rectangle>
+            <Button x:Name="AddSongs" Background="#528e86" BorderBrush="Transparent" Grid.RowSpan="2" Margin="-5 20 0 0" FontSize="25" FontFamily="Franklin Gothic Medium" Click="AddSongs_Click">
+                <StackPanel Orientation="Horizontal" Width="200" Cursor="Hand">
+                    <Image Source="/Resource/addSong.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 5 0 0" Text="Добавить" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="EditSongs" Background="#528e86" BorderBrush="Transparent" Grid.RowSpan="2" Margin="-5 15 0 0" FontSize="25" FontFamily="Franklin Gothic Medium">
+                <StackPanel Orientation="Horizontal" Width="200" Cursor="Hand">
+                    <Image Source="/Resource/editSong.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 5 0 0" Text="Изменить" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="DeleteSongs" Background="#528e86" BorderBrush="Transparent" Grid.RowSpan="2"  Margin="-5 15 0 0" FontSize="25" FontFamily="Franklin Gothic Medium" Click="DeleteSongs_Click">
+                <StackPanel Orientation="Horizontal" Width="200" Cursor="Hand">
+                    <Image Source="/Resource/deleteSong.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 5 0 0" Text="Удалить" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Rectangle Margin="-5 20 0 0" Width="200" Fill="#a19a90" Height="5" Opacity="0.45"></Rectangle>
+            <Button x:Name="MarksSongs" Background="#528e86" BorderBrush="Transparent" Grid.RowSpan="2"  Margin="-5 20 0 0" FontSize="25" FontFamily="Franklin Gothic Medium">
+                <StackPanel Orientation="Horizontal" Width="200" Cursor="Hand">
+                    <Image Source="/Resource/rateSong.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 5 0 0" Text="Оценить" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="CommentsSongs" Background="#528e86" BorderBrush="Transparent" Grid.RowSpan="2"  Margin="-5 15 0 0" FontSize="25" FontFamily="Franklin Gothic Medium">
+                <StackPanel Orientation="Horizontal" Width="200" Cursor="Hand">
+                    <Image Source="/Resource/commentSong.png" Height="42" Width="46"/>
+                    <TextBlock Margin="2 5 0 0" Text="Коммент" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </TreeView>
+
+        <ListBox x:Name="MusicList" Grid.Column="2" Grid.RowSpan="2" Background="#528e86" Margin="0,0,0,75" FontSize="16"></ListBox>
+
+        <StackPanel Grid.RowSpan="2" Grid.Column="1">
+            <Rectangle Height="76" Fill="#b7ced2" Stroke="Transparent"></Rectangle>
+            <Image Source="/Resource/Logo.png" Margin="0 -75 0 0" Width="285" Height="50"></Image>
+            <Rectangle Height="1" Fill="#a19a90" Opacity="0.45"></Rectangle>
+            <TextBlock Margin="40 0 0 0" Foreground="#846e76" Text="Исполнитель и название                                  Жанр                            Комменты                            Оценка" FontSize="18" FontFamily="Times New Roman"></TextBlock>
+            <ListView x:Name="ListOfSongs" Background="#dcdde2" Height="366" BorderBrush="Transparent" ItemsSource="{Binding}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Button x:Name="PlayBtn" BorderBrush="Transparent" Background="#528e86" Click="PlayBtn_Click" Tag="{Binding id}">
+                                <Image Source="/Resource/Play.png" Width="25" Height="25"></Image>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="25"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <TextBlock x:Name="NameAndCreator" Margin="5 1 0 0 " FontWeight="Bold" FontSize="18" FontFamily="Times New Roman" Width="342">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} - {1}">
+                                        <Binding Path="Creator"></Binding>
+                                        <Binding Path="Name"></Binding>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Margin="-1 1 0 0 " Text="{Binding Genre}" FontWeight="Bold" FontSize="18" FontFamily="Times New Roman"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Background="#537571" Opacity="0.99" Margin="0,146,0,0">
+            <Rectangle Fill="#537571" Stroke="#384340"/>
+            <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" MediaOpened="mediaElement_MediaOpened"></MediaElement>
+            <Slider x:Name="TimeLineSlider" 
+                    Height="30" 
+                    Width="800" 
+                    IsMoveToPointEnabled="True" 
+                    Minimum="0"
+                    ValueChanged="TimeLineSlider_ValueChanged"></Slider>
+            <WrapPanel Margin="0 10 0 0">
+
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
